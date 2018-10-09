@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="4dp"
+    tools:context="com.ar.wins.masakuy.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daftar Akun"
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"/>
+
+    <EditText
+        android:id="@+id/et_daftar_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Username"/>
+
+    <EditText
+        android:id="@+id/et_daftar_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Email"/>
+
+    <EditText
+        android:id="@+id/et_daftar_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Password"/>
+
+    <Button
+        android:id="@+id/bt_daftar_daftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="8dp"
+        android:text="Daftar"
+        android:textColor="#ffffff"
+        android:background="@drawable/shadow_button" />
+
+    <TextView
+        android:id="@+id/bt_daftar_masuk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="4dp"
+        android:text="Sudah punya akun? Masuk disini."
+        />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/bt_daftar_google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
