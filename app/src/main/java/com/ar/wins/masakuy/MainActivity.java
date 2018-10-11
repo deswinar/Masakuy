@@ -1,5 +1,6 @@
 package com.ar.wins.masakuy;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view == btDaftar){
             daftarAkun();
+            startActivity(new Intent(this, EmailVerificationActivity.class));
             return;
         }
         if(view == btMasukGoogle){
