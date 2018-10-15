@@ -37,9 +37,16 @@ public class EmailVerificationActivity extends AppCompatActivity {
             Toast.makeText(context, "Email telah terverifikasi", Toast.LENGTH_SHORT).show();
         }
 
+        tvResend = findViewById(R.id.tv_resend);
+        setTextResend();
+
         sendVerification();
 
-        tvResend = findViewById(R.id.tv_resend);
+
+    }
+
+    public void setTextResend(){
+
         textResend = new SpannableString("Link verifikasi telah dikirim ke email anda. Mohon verifikasi akun melalui email anda. Resend Verification");
         textResend.setSpan(new ForegroundColorSpan(Color.RED), 87, 106, 0 );
 

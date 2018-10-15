@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         if(view == btMasuk){
+            startActivity(new Intent(this, LoginActivity.class));
             return;
         }
     }
