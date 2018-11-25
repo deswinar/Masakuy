@@ -28,10 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:inputType="textPassword"
         android:hint="Password"/>
 
     <Button
-        android:id="@+id/bt_masuk_daftar"
+        android:id="@+id/bt_masuk_masuk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -40,12 +41,14 @@
         android:textColor="#ffffff"
         android:background="@drawable/shadow_button" />
 
-    <TextView
-        android:id="@+id/bt_masuk_masuk"
+    <Button
+        android:id="@+id/bt_masuk_daftar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginVertical="4dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"
         android:text="Belum punya akun? Daftar disini."
         />
 

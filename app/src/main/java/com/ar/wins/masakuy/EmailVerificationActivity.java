@@ -1,6 +1,7 @@
 package com.ar.wins.masakuy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,11 +22,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class EmailVerificationActivity extends AppCompatActivity {
 
-    TextView tvResend;
+    TextView tvStatusAkun;
+    Button btResend;
     SpannableString textResend;
-    Context context;
+
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,33 +38,23 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        if(firebaseUser.isEmailVerified()){
-            Toast.makeText(context, "Email telah terverifikasi", Toast.LENGTH_SHORT).show();
-        }
 
-        tvResend = findViewById(R.id.tv_resend);
-        setTextResend();
+//        if(firebaseUser.isEmailVerified()){
+//            startActivity(new Intent(this, HomeActivity.class));
+//        }
 
-        sendVerification();
-
-
-    }
-
-    public void setTextResend(){
-
-        textResend = new SpannableString("Link verifikasi telah dikirim ke email anda. Mohon verifikasi akun melalui email anda. Resend Verification");
-        textResend.setSpan(new ForegroundColorSpan(Color.RED), 87, 106, 0 );
-
-        ClickableSpan clickableSpan = new ClickableSpan() {
+        tvStatusAkun = findViewById(R.id.tv_status_akun);
+        btResend = findViewById(R.id.bt_resend);
+        btResend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendVerification();
             }
-        };
-        textResend.setSpan(clickableSpan, 87, 106, 0);
+        });
 
-        tvResend.setMovementMethod(LinkMovementMethod.getInstance());
-        tvResend.setText(textResend, TextView.BufferType.SPANNABLE);
+//        sendVerification();
+
+        tvStatusAkun.setText(String.valueOf(firebaseUser.isEmailVerified()));
     }
 
     public void sendVerification(){
@@ -67,9 +62,19 @@ public class EmailVerificationActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(context, "Email verifikasi telah terkirim", Toast.LENGTH_SHORT).show();
+                    firebaseUser.reload().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            tvStatusAkun.setText(String.valueOf(firebaseUser.isEmailVerified()));
+                        }
+                    });
+//                    firebaseAuth.signOut();
+//                    finish();
+//                    startActivity(new Intent(this, LoginActivity.class));
+                    Toast.makeText(EmailVerificationActivity.this, "Email verifikasi telah terkirim", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(context, "Email verifikasi gagal terkirim", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EmailVerificationActivity.this, "Email verifikasi gagal terkirim", Toast.LENGTH_SHORT).show();
+                    return;
                 }
             }
         });

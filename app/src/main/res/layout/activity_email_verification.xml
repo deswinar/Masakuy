@@ -13,15 +13,25 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="4dp"
-        android:text="Akun Berhasil Dibuat"
+        android:text="Verifikasi Akun"
         android:textSize="24dp"
         />
 
-    <TextView
-        android:id="@+id/tv_resend"
+    <Button
+        android:id="@+id/bt_resend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"
+        android:text="Link verifikasi telah dikirim ke email anda. Mohon verifikasi akun melalui email anda. Klik disini untuk mengirim ulang email verifikasi"/>
+
+    <TextView
+        android:id="@+id/tv_status_akun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="20dp"/>
 
 </LinearLayout>
